@@ -1,4 +1,4 @@
-import 'package:demo3/features/jobs_screen.dart';
+import 'package:demo3/features/presentation/widgets/jobs_screen.dart';
 import 'package:go_router/go_router.dart';
 
 enum AppRoute {

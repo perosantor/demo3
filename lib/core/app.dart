@@ -16,19 +16,19 @@ class _DemoAppState extends State<DemoApp> {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       theme: ThemeData(
+        tabBarTheme: TabBarTheme(labelColor: DColors.baseColor.secondary),
         appBarTheme: AppBarTheme(
-          iconTheme: IconThemeData(color: DColors.baseColor.secondary),
           backgroundColor: DColors.baseColor.gray,
           elevation: Sizes.elevation.zero,
           titleTextStyle: TextStyle(
             color: DColors.baseColor.secondary,
-            fontSize: Sizes.font.title,
+            fontSize: Sizes.text.large,
             fontWeight: FontWeight.w500,
           ),
         ),
         scaffoldBackgroundColor: DColors.baseColor.lightGray,
-        primarySwatch: Colors.grey,
-        colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.grey),
+        primaryColor: DColors.baseColor.primary,
+        fontFamily: 'IBMPlexSans',
       ),
       routerDelegate: goRouter.routerDelegate,
       routeInformationParser: goRouter.routeInformationParser,

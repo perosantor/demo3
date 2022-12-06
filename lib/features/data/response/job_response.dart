@@ -5,6 +5,8 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'job_response.freezed.dart';
 part 'job_response.g.dart';
 
+//ignore_for_file: invalid_annotation_target
+
 @freezed
 class JobResponse with _$JobResponse {
   @JsonSerializable(explicitToJson: true)

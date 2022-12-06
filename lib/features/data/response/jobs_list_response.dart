@@ -5,9 +5,10 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'jobs_list_response.freezed.dart';
 part 'jobs_list_response.g.dart';
 
+//ignore_for_file: invalid_annotation_target
+
 @freezed
 class JobsListResponse with _$JobsListResponse {
-  // ignore: invalid_annotation_target
   @JsonSerializable(explicitToJson: true)
   const factory JobsListResponse({
     required List<JobResponse> jobsList,
