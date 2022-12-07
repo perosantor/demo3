@@ -1,16 +1,15 @@
 # demo3
 
-A new Flutter project.
+Demo project showcasing using flutter_bloc with freezed to display list of jobs.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+In order to run the app you need to create dev build configuration In order to do that the top of the IDE there is a "Configuration" drop down. Click on that to set up development configuration.
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Click on the + sign to add a new configuration
+Choose Flutter in the dropdown list
+Change the name to reflect the type of configuration you are adding 'proposed: Demo (Dev), Demo (Prod)'
+Demo (Dev) configuration:
+Set program entry point to main_dev.dart
+Click Apply and OK
+Similarly for prod configuration
