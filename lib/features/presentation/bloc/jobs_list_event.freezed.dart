@@ -19,32 +19,38 @@ mixin _$JobsListEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() jobsListFetched,
+    required TResult Function(JobEntity updatedJob) jobsListUpdated,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? jobsListFetched,
+    TResult? Function(JobEntity updatedJob)? jobsListUpdated,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? jobsListFetched,
+    TResult Function(JobEntity updatedJob)? jobsListUpdated,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(JobsListFetched value) jobsListFetched,
+    required TResult Function(JobsListUpdated value) jobsListUpdated,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(JobsListFetched value)? jobsListFetched,
+    TResult? Function(JobsListUpdated value)? jobsListUpdated,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(JobsListFetched value)? jobsListFetched,
+    TResult Function(JobsListUpdated value)? jobsListUpdated,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -107,6 +113,7 @@ class _$JobsListFetched implements JobsListFetched {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() jobsListFetched,
+    required TResult Function(JobEntity updatedJob) jobsListUpdated,
   }) {
     return jobsListFetched();
   }
@@ -115,6 +122,7 @@ class _$JobsListFetched implements JobsListFetched {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? jobsListFetched,
+    TResult? Function(JobEntity updatedJob)? jobsListUpdated,
   }) {
     return jobsListFetched?.call();
   }
@@ -123,6 +131,7 @@ class _$JobsListFetched implements JobsListFetched {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? jobsListFetched,
+    TResult Function(JobEntity updatedJob)? jobsListUpdated,
     required TResult orElse(),
   }) {
     if (jobsListFetched != null) {
@@ -135,6 +144,7 @@ class _$JobsListFetched implements JobsListFetched {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(JobsListFetched value) jobsListFetched,
+    required TResult Function(JobsListUpdated value) jobsListUpdated,
   }) {
     return jobsListFetched(this);
   }
@@ -143,6 +153,7 @@ class _$JobsListFetched implements JobsListFetched {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(JobsListFetched value)? jobsListFetched,
+    TResult? Function(JobsListUpdated value)? jobsListUpdated,
   }) {
     return jobsListFetched?.call(this);
   }
@@ -151,6 +162,7 @@ class _$JobsListFetched implements JobsListFetched {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(JobsListFetched value)? jobsListFetched,
+    TResult Function(JobsListUpdated value)? jobsListUpdated,
     required TResult orElse(),
   }) {
     if (jobsListFetched != null) {
@@ -162,4 +174,149 @@ class _$JobsListFetched implements JobsListFetched {
 
 abstract class JobsListFetched implements JobsListEvent {
   const factory JobsListFetched() = _$JobsListFetched;
+}
+
+/// @nodoc
+abstract class _$$JobsListUpdatedCopyWith<$Res> {
+  factory _$$JobsListUpdatedCopyWith(
+          _$JobsListUpdated value, $Res Function(_$JobsListUpdated) then) =
+      __$$JobsListUpdatedCopyWithImpl<$Res>;
+  @useResult
+  $Res call({JobEntity updatedJob});
+
+  $JobEntityCopyWith<$Res> get updatedJob;
+}
+
+/// @nodoc
+class __$$JobsListUpdatedCopyWithImpl<$Res>
+    extends _$JobsListEventCopyWithImpl<$Res, _$JobsListUpdated>
+    implements _$$JobsListUpdatedCopyWith<$Res> {
+  __$$JobsListUpdatedCopyWithImpl(
+      _$JobsListUpdated _value, $Res Function(_$JobsListUpdated) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? updatedJob = null,
+  }) {
+    return _then(_$JobsListUpdated(
+      updatedJob: null == updatedJob
+          ? _value.updatedJob
+          : updatedJob // ignore: cast_nullable_to_non_nullable
+              as JobEntity,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $JobEntityCopyWith<$Res> get updatedJob {
+    return $JobEntityCopyWith<$Res>(_value.updatedJob, (value) {
+      return _then(_value.copyWith(updatedJob: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$JobsListUpdated implements JobsListUpdated {
+  const _$JobsListUpdated({required this.updatedJob});
+
+  @override
+  final JobEntity updatedJob;
+
+  @override
+  String toString() {
+    return 'JobsListEvent.jobsListUpdated(updatedJob: $updatedJob)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$JobsListUpdated &&
+            (identical(other.updatedJob, updatedJob) ||
+                other.updatedJob == updatedJob));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, updatedJob);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$JobsListUpdatedCopyWith<_$JobsListUpdated> get copyWith =>
+      __$$JobsListUpdatedCopyWithImpl<_$JobsListUpdated>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() jobsListFetched,
+    required TResult Function(JobEntity updatedJob) jobsListUpdated,
+  }) {
+    return jobsListUpdated(updatedJob);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? jobsListFetched,
+    TResult? Function(JobEntity updatedJob)? jobsListUpdated,
+  }) {
+    return jobsListUpdated?.call(updatedJob);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? jobsListFetched,
+    TResult Function(JobEntity updatedJob)? jobsListUpdated,
+    required TResult orElse(),
+  }) {
+    if (jobsListUpdated != null) {
+      return jobsListUpdated(updatedJob);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(JobsListFetched value) jobsListFetched,
+    required TResult Function(JobsListUpdated value) jobsListUpdated,
+  }) {
+    return jobsListUpdated(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(JobsListFetched value)? jobsListFetched,
+    TResult? Function(JobsListUpdated value)? jobsListUpdated,
+  }) {
+    return jobsListUpdated?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(JobsListFetched value)? jobsListFetched,
+    TResult Function(JobsListUpdated value)? jobsListUpdated,
+    required TResult orElse(),
+  }) {
+    if (jobsListUpdated != null) {
+      return jobsListUpdated(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class JobsListUpdated implements JobsListEvent {
+  const factory JobsListUpdated({required final JobEntity updatedJob}) =
+      _$JobsListUpdated;
+
+  JobEntity get updatedJob;
+  @JsonKey(ignore: true)
+  _$$JobsListUpdatedCopyWith<_$JobsListUpdated> get copyWith =>
+      throw _privateConstructorUsedError;
 }

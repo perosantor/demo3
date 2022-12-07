@@ -18,16 +18,17 @@ class JobListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (job.status == JobStatus.rejected) return Container();
     return Padding(
       padding: EdgeInsets.only(
         left: Sizes.padding.standard,
         right: Sizes.padding.standard,
-        top: Sizes.padding.standard,
+        top: Sizes.padding.small,
       ),
       child: Card(
         elevation: Sizes.elevation.small,
         child: Padding(
-          padding: const EdgeInsets.only(left: 21.0, top: 18.0, bottom: 15.0, right: 18.0),
+          padding: const EdgeInsets.only(left: 21.0, top: 12.0, bottom: 15.0, right: 18.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -61,40 +62,41 @@ class JobListItem extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(top: 3.0),
                 child: Text(
-                  'Expected delivery date: ${job.deliveryDate.day}/${job.deliveryDate.month}/${job.deliveryDate.year}',
+                  'Expected delivery date: ${job.deliveryDateFormatted}',
                   style: TextStyle(
                     fontSize: Sizes.text.tiny,
                     fontWeight: FontWeight.w400,
                   ),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.only(top: 15.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    OutlinedButton(
-                        onPressed: onRejected,
+              if (job.status != JobStatus.accepted)
+                Padding(
+                  padding: const EdgeInsets.only(top: 15.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      OutlinedButton(
+                          onPressed: onRejected,
+                          child: Text(
+                            'REJECT',
+                            style: TextStyle(color: DColors.baseColor.secondary),
+                          )),
+                      const SizedBox(
+                        width: 16.0,
+                      ),
+                      OutlinedButton(
+                        style: OutlinedButton.styleFrom(
+                          backgroundColor: DColors.baseColor.secondary,
+                        ),
+                        onPressed: onAccepted,
                         child: Text(
-                          'REJECT',
-                          style: TextStyle(color: DColors.baseColor.secondary),
-                        )),
-                    const SizedBox(
-                      width: 16.0,
-                    ),
-                    OutlinedButton(
-                      style: OutlinedButton.styleFrom(
-                        backgroundColor: DColors.baseColor.secondary,
+                          'ACCEPT',
+                          style: TextStyle(color: DColors.baseColor.primary),
+                        ),
                       ),
-                      onPressed: onAccepted,
-                      child: Text(
-                        'ACCEPT',
-                        style: TextStyle(color: DColors.baseColor.primary),
-                      ),
-                    ),
-                  ],
-                ),
-              )
+                    ],
+                  ),
+                )
             ],
           ),
         ),
@@ -102,4 +104,3 @@ class JobListItem extends StatelessWidget {
     );
   }
 }
-

@@ -11,7 +11,6 @@ import 'jobs_list_widget.dart';
 class JobsScreen extends StatelessWidget {
   const JobsScreen({Key? key}) : super(key: key);
 
-  // final _jobsRepo = JobsRepository(dataSource: JobsRemoteDataSource(networkService: NetworkService(baseUrl: Url.base)));
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -24,18 +23,18 @@ class JobsScreen extends StatelessWidget {
             child: _TabBar(),
           ),
         ),
-        body: TabBarView(
-          children: [
-            BlocProvider(
-              create: (_) => JobsListBloc(
-                repository: locator.get<JobsRepositoryI>(),
-              )..add(const JobsListFetched()),
-              child: const Center(
-                  child: JobsListWidget(),
-              ),
+        body: BlocProvider(
+          create: (_) => JobsListBloc(
+            repository: locator.get<JobsRepositoryI>(),
+          )..add(const JobsListFetched()),
+          child: const Center(
+            child: TabBarView(
+              children: [
+                JobsListWidget(listType: JobListType.all),
+                JobsListWidget(listType: JobListType.accepted),
+              ],
             ),
-            const Center(child: Text('ACCEPTED JOBS LIST')),
-          ],
+          ),
         ),
       ),
     );

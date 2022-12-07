@@ -22,6 +22,7 @@ JobEntity _$JobEntityFromJson(Map<String, dynamic> json) {
 mixin _$JobEntity {
   String get id => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
+  JobStatus get status => throw _privateConstructorUsedError;
   String get pickupAddress => throw _privateConstructorUsedError;
   String get dropOffAddress => throw _privateConstructorUsedError;
   DateTime get datePosted => throw _privateConstructorUsedError;
@@ -41,6 +42,7 @@ abstract class $JobEntityCopyWith<$Res> {
   $Res call(
       {String id,
       String title,
+      JobStatus status,
       String pickupAddress,
       String dropOffAddress,
       DateTime datePosted,
@@ -62,6 +64,7 @@ class _$JobEntityCopyWithImpl<$Res, $Val extends JobEntity>
   $Res call({
     Object? id = null,
     Object? title = null,
+    Object? status = null,
     Object? pickupAddress = null,
     Object? dropOffAddress = null,
     Object? datePosted = null,
@@ -76,6 +79,10 @@ class _$JobEntityCopyWithImpl<$Res, $Val extends JobEntity>
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as JobStatus,
       pickupAddress: null == pickupAddress
           ? _value.pickupAddress
           : pickupAddress // ignore: cast_nullable_to_non_nullable
@@ -106,6 +113,7 @@ abstract class _$$_JobEntityCopyWith<$Res> implements $JobEntityCopyWith<$Res> {
   $Res call(
       {String id,
       String title,
+      JobStatus status,
       String pickupAddress,
       String dropOffAddress,
       DateTime datePosted,
@@ -125,6 +133,7 @@ class __$$_JobEntityCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? title = null,
+    Object? status = null,
     Object? pickupAddress = null,
     Object? dropOffAddress = null,
     Object? datePosted = null,
@@ -139,6 +148,10 @@ class __$$_JobEntityCopyWithImpl<$Res>
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as JobStatus,
       pickupAddress: null == pickupAddress
           ? _value.pickupAddress
           : pickupAddress // ignore: cast_nullable_to_non_nullable
@@ -165,6 +178,7 @@ class _$_JobEntity implements _JobEntity {
   const _$_JobEntity(
       {required this.id,
       required this.title,
+      this.status = JobStatus.idle,
       required this.pickupAddress,
       required this.dropOffAddress,
       required this.datePosted,
@@ -178,6 +192,9 @@ class _$_JobEntity implements _JobEntity {
   @override
   final String title;
   @override
+  @JsonKey()
+  final JobStatus status;
+  @override
   final String pickupAddress;
   @override
   final String dropOffAddress;
@@ -188,7 +205,7 @@ class _$_JobEntity implements _JobEntity {
 
   @override
   String toString() {
-    return 'JobEntity(id: $id, title: $title, pickupAddress: $pickupAddress, dropOffAddress: $dropOffAddress, datePosted: $datePosted, deliveryDate: $deliveryDate)';
+    return 'JobEntity(id: $id, title: $title, status: $status, pickupAddress: $pickupAddress, dropOffAddress: $dropOffAddress, datePosted: $datePosted, deliveryDate: $deliveryDate)';
   }
 
   @override
@@ -198,6 +215,7 @@ class _$_JobEntity implements _JobEntity {
             other is _$_JobEntity &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.title, title) || other.title == title) &&
+            (identical(other.status, status) || other.status == status) &&
             (identical(other.pickupAddress, pickupAddress) ||
                 other.pickupAddress == pickupAddress) &&
             (identical(other.dropOffAddress, dropOffAddress) ||
@@ -210,7 +228,7 @@ class _$_JobEntity implements _JobEntity {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, title, pickupAddress,
+  int get hashCode => Object.hash(runtimeType, id, title, status, pickupAddress,
       dropOffAddress, datePosted, deliveryDate);
 
   @JsonKey(ignore: true)
@@ -231,6 +249,7 @@ abstract class _JobEntity implements JobEntity {
   const factory _JobEntity(
       {required final String id,
       required final String title,
+      final JobStatus status,
       required final String pickupAddress,
       required final String dropOffAddress,
       required final DateTime datePosted,
@@ -243,6 +262,8 @@ abstract class _JobEntity implements JobEntity {
   String get id;
   @override
   String get title;
+  @override
+  JobStatus get status;
   @override
   String get pickupAddress;
   @override

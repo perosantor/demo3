@@ -1,3 +1,5 @@
+import 'package:demo3/features/domain/entity/job_entity.dart';
+import 'package:demo3/features/presentation/bloc/jobs_list_event.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../core/styles/colors.dart';
@@ -5,18 +7,15 @@ import '../bloc/jobs_list_bloc.dart';
 import 'error_widget.dart';
 import 'jobs_list_item.dart';
 
-class JobsListWidget extends StatefulWidget {
-  const JobsListWidget({super.key});
+enum JobListType { all, accepted }
 
-  @override
-  State<JobsListWidget> createState() => _JobsListWidgetState();
-}
+class JobsListWidget extends StatelessWidget {
+  final JobListType listType;
 
-class _JobsListWidgetState extends State<JobsListWidget> {
-  @override
-  void initState() {
-    super.initState();
-  }
+  const JobsListWidget({
+    super.key,
+    required this.listType,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -24,26 +23,31 @@ class _JobsListWidgetState extends State<JobsListWidget> {
       builder: (context, state) {
         switch (state.status) {
           case PhotoListStatus.failure:
-            return const ErrorMessageWidget(text: 'Error');
+            return const ErrorMessageWidget(text: 'Error just occurred :(');
           case PhotoListStatus.success:
-            if (state.jobList.isEmpty) {
-              return const ErrorMessageWidget(text: 'Empty list');
-            }
+            final jobList = listType == JobListType.all ? state.allJobsList : state.acceptedJobsList;
+            if (jobList.isEmpty) return Container();
             return ListView.builder(
                 itemBuilder: (BuildContext context, int index) {
                   return JobListItem(
-                    job: state.jobList[index],
+                    job: jobList[index],
                     onAccepted: () {
-                      final photoJson = state.jobList[index].toJson();
-                      print('ACCEPTED index: $photoJson');
+                      final photoJson = jobList[index].toJson();
+                      debugPrint('ACCEPTED: $photoJson');
+                      context
+                          .read<JobsListBloc>()
+                          .add(JobsListUpdated(updatedJob: jobList[index].copyWith(status: JobStatus.accepted)));
                     },
                     onRejected: () {
-                      final photoJson = state.jobList[index].toJson();
-                      print('REJECTED index: $photoJson');
+                      final photoJson = jobList[index].toJson();
+                      debugPrint('REJECTED: $photoJson');
+                      context
+                          .read<JobsListBloc>()
+                          .add(JobsListUpdated(updatedJob: jobList[index].copyWith(status: JobStatus.rejected)));
                     },
                   );
                 },
-                itemCount: state.jobList.length);
+                itemCount: jobList.length);
           case PhotoListStatus.initial:
             return Center(
               child: CircularProgressIndicator(

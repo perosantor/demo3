@@ -7,6 +7,7 @@ class Sizes {
 }
 
 class DPadding {
+  final double small = 12.0;
   final double standard = 16.0;
   final double large = 20.0;
 }

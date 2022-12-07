@@ -8,32 +8,32 @@ enum PhotoListStatus {
 
 class JobsListState extends Equatable {
   final PhotoListStatus status;
-  final List<JobEntity> jobList;
-  final bool hasReachedMax;
+  final List<JobEntity> allJobsList;
+  final List<JobEntity> acceptedJobsList;
 
   const JobsListState({
     this.status = PhotoListStatus.initial,
-    this.jobList = const <JobEntity>[],
-    this.hasReachedMax = false,
+    this.allJobsList = const <JobEntity>[],
+    this.acceptedJobsList = const <JobEntity>[],
   });
 
   JobsListState copyWith({
     PhotoListStatus? status,
-    List<JobEntity>? jobList,
-    bool? hasReachedMax,
+    List<JobEntity>? all,
+    List<JobEntity>? accepted,
   }) {
     return JobsListState(
       status: status ?? this.status,
-      jobList: jobList ?? this.jobList,
-      hasReachedMax: hasReachedMax ?? this.hasReachedMax,
+      allJobsList: all ?? allJobsList,
+      acceptedJobsList: accepted ?? acceptedJobsList,
     );
   }
 
   @override
   String toString() {
-    return '''JobsListState { status: $status, hasReachedMax: $hasReachedMax, jobList: ${jobList.length} }''';
+    return '''JobsListState { status: $status, allJobList: ${allJobsList.length} }''';
   }
 
   @override
-  List<Object> get props => [status, jobList, hasReachedMax];
+  List<Object> get props => [status, allJobsList, acceptedJobsList];
 }
